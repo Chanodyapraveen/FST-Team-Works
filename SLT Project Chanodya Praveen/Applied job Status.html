@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLT Mobitel - Applied Job Status</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+   <body class="vacancies-page">
+    <!-- Header Section -->
+    <nav class="nav-bar">
+        <img src="../assets/images/img_rectangle_1.png" alt="SLTMobitel Logo" class="logo">
+        <h1 class="program-title">Training Program</h1>
+        <div class="nav-links">
+            <a href="#" class="nav-link">Job Status</a>
+            <span class="separator">|</span>
+            <a href="#" class="nav-link">Apply for Job</a>
+            <span class="separator">|</span>
+            <a href="Vacancies.html" class="nav-link">Jobs for You</a>
+            <span class="separator">|</span>
+            <a href="index.html" class="nav-link">Home</a>
+            <span class="separator">|</span>
+            <a href="login.html" class="nav-link">Login</a>
+        </div>
+    </nav>
+        <div class="status-main-container">
+            <div class="status-page-title">Applied Job Status:</div>
+            <table class="status-table">
+                <thead>
+                    <tr>
+                        <th>Job Field</th>
+                        <th>Job Position</th>
+                        <th>Recommendation</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Software</td>
+                        <td>QA Trainee</td>
+                        <td>Approved yesterday</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>Telecommunication</td>
+                        <td>Trainee</td>
+                        <td>Rejected yesterday</td>
+                        <td>Rejected</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        // Function to load application data from localStorage
+        function loadApplicationData() {
+            const applicationData = JSON.parse(localStorage.getItem('applicationData'));
+
+            if (applicationData) {
+                // Populate the fields dynamically
+                document.querySelector('.status-value').textContent = applicationData.jobTitle || 'N/A';
+                document.querySelector('.status-table tbody').innerHTML = `
+                    <tr>
+                        <td>${applicationData.fullName || 'N/A'}</td>
+                        <td>${applicationData.field || 'N/A'}</td>
+                        <td>${applicationData.jobTitle || 'N/A'}</td>
+                        <td><span class="status-badge shortlisted">Shortlisted</span></td>
+                    </tr>
+                `;
+
+                // Example: Update additional fields if needed
+                document.querySelector('.status-message').innerHTML = `
+                    <p><strong>Current Status:</strong> Your application for the ${applicationData.jobTitle || 'N/A'} position has been received.</p>
+                    <p><strong>Next Steps:</strong> Our HR team will contact you soon.</p>
+                `;
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = loadApplicationData;
+    </script>
+</body>
+</html>

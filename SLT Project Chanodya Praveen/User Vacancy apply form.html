@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLT Mobitel - Job Application Form</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <div class="nav-bar">
+        <img src="../assets/images/img_rectangle_1.png" alt="SLTMobitel Logo" class="logo">
+        <h1 class="program-title">Training Program</h1>
+        <div class="nav-links">
+            <a href="job-status.html" class="nav-link">Job Status</a>
+            <span class="separator">|</span>
+            <a href="apply.html" class="nav-link">Apply for Job</a>
+            <span class="separator">|</span>
+            <a href="jobs-for-you.html" class="nav-link">Jobs for You</a>
+            <span class="separator">|</span>
+            <a href="index.html" class="nav-link">Home</a>
+            <span class="separator">|</span>
+            <a href="login.html" class="nav-link login-btn">Login</a>
+        </div>
+    </div>
+    
+    <div class="application-form">
+        <form id="jobApplicationForm" action="submit-application.php" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label class="form-label">Job Title :</label>
+                <input type="text" class="form-control" name="job_title" value="" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Name with Initials:</label>
+                <input type="text" class="form-control" name="name_with_initials" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Full Name :</label>
+                <input type="text" class="form-control" name="full_name" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Gender :</label>
+                <select class="select-control" name="gender" required>
+                    <option value="" disabled selected>Select gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Date of Birth :</label>
+                <input type="date" class="date-control" name="dob" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Email :</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Contact Number :</label>
+                <input type="tel" class="form-control" name="contact_number" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Field :</label>
+                <select class="select-control" name="field" required>
+                    <option value="" disabled selected>Select field</option>
+                    <option value="computer_science">Computer Science</option>
+                    <option value="information_technology">Information Technology</option>
+                    <option value="software_engineering">Software Engineering</option>
+                    <option value="web_development">Web Development</option>
+                    <option value="network_engineering">Network Engineering</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="upload-section">
+                <div class="upload-title">Upload your CV here</div>
+                <div class="dropzone" id="dropzone" onclick="document.getElementById('cv-file').click()">
+                    <div class="upload-icon">&#x2601;</div>
+                    <div class="dropzone-text">Drag&Drop files here</div>
+                    <div class="or-text">or</div>
+                    <button type="button" class="browse-btn" onclick="document.getElementById('cv-file').click()">Browse Files</button>
+                    <input type="file" id="cv-file" name="cv_file" class="hidden-input" accept=".pdf,.doc,.docx" required>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+    
+    <script>
+        // File upload handling
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('cv-file');
+        
+        // Prevent default drag behaviors
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropzone.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        // Highlight drop zone when dragging over it
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropzone.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropzone.addEventListener(eventName, unhighlight, false);
+        });
+        
+        function highlight() {
+            dropzone.style.borderColor = '#0066b2';
+            dropzone.style.backgroundColor = '#f0f9ff';
+        }
+        
+        function unhighlight() {
+            dropzone.style.borderColor = '#ccc';
+            dropzone.style.backgroundColor = 'transparent';
+        }
+        
+        // Handle dropped files
+        dropzone.addEventListener('drop', handleDrop, false);
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            
+            if (files.length > 0) {
+                fileInput.files = files;
+                updateFileInfo(files[0].name);
+            }
+        }
+        
+        // Handle file selection
+        fileInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                updateFileInfo(this.files[0].name);
+            }
+        });
+        
+        function updateFileInfo(fileName) {
+            dropzone.innerHTML = `
+                <div class="upload-icon">✓</div>
+                <div class="dropzone-text">File selected: ${fileName}</div>
+                <div class="or-text">or</div>
+                <button type="button" class="browse-btn">Change File</button>
+            `;
+        }
+        
+        // Handle form submission
+        document.getElementById('jobApplicationForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission behavior
+
+            // Collect form data
+            const formData = {
+                jobTitle: this.querySelector('input[name="job_title"]').value,
+                nameWithInitials: this.querySelector('input[name="name_with_initials"]').value,
+                fullName: this.querySelector('input[name="full_name"]').value,
+                gender: this.querySelector('select[name="gender"]').value,
+                dob: this.querySelector('input[name="dob"]').value,
+                email: this.querySelector('input[name="email"]').value,
+                contactNumber: this.querySelector('input[name="contact_number"]').value,
+                field: this.querySelector('select[name="field"]').value,
+            };
+
+            // Save data to localStorage
+            localStorage.setItem('applicationData', JSON.stringify(formData));
+
+            // Redirect to the Applied Job Status page
+            window.location.href = 'Applied job Status.html';
+        });
+
+        // Function to get query parameters from the URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Set the job title dynamically
+        document.addEventListener("DOMContentLoaded", function () {
+            const jobTitle = getQueryParam("jobTitle");
+            if (jobTitle) {
+                const jobTitleInput = document.querySelector('input[name="job_title"]');
+                if (jobTitleInput) {
+                    jobTitleInput.value = jobTitle;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

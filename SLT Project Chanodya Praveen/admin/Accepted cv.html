@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accepted CVs</title>
+    <meta name="viewport" content="width=1920">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../admincss/admin.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,700|Roboto:400,700|Montserrat:700&display=swap">
+</head>
+<body class="accepted-cv-bg">
+    <script>
+        if(localStorage.getItem('adminLoggedIn') !== 'true') {
+            window.location.href = "../login.html";
+        }
+    </script>
+    <!-- Top Bar -->
+    <div class="admin-topbar">
+        <img src="../assets/images/img_rectangle_1.png" alt="SLTMobitel Logo" class="admin-logo">
+        <span class="admin-title">Training Program</span>
+        <nav class="admin-nav">
+            <a href="../index.html" class="admin-nav-link">Home</a>
+            <a href="#" class="admin-nav-link" id="logoutBtn">Logout</a>
+        </nav>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+        <a href="jobvacancycreation.html" class="sidebar-section">
+            <span class="sidebar-icon"></span>
+            <span class="sidebar-label">Job Creation</span>
+        </a>
+        <a href="job modification.html" class="sidebar-section">
+            <span class="sidebar-icon"></span>
+            <span class="sidebar-label">Job Modification</span>
+        </a>
+        <a href="Recieved cv.html" class="sidebar-section">
+            <span class="sidebar-icon"></span>
+            <span class="sidebar-label">Received CVs</span>
+        </a>
+        <a href="Accepted cv.html" class="sidebar-section active">
+            <span class="sidebar-icon"></span>
+            <span class="sidebar-label bold">Accepted CVs</span>
+        </a>
+    </aside>
+
+    <!-- Main Card -->
+    <div class="accepted-cv-card">
+        <div class="accepted-cv-title">Accepted CVs</div>
+        <table class="accepted-cv-table">
+            <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Field</th>
+                    <th>Contact Number</th>
+                    <th>CV</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Software</td>
+                    <td>QA Trainee</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Telecommunication</td>
+                    <td>Trainee</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.removeItem('adminLoggedIn');
+            window.location.href = "../index.html"; // Adjust path if needed
+        });
+    </script>
+</body>
+</html>

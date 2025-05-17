@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLT Mobitel Training Program</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body class="vacancies-page">
+    <!-- Header Section -->
+    <nav class="nav-bar">
+        <img src="../assets/images/img_rectangle_1.png" alt="SLTMobitel Logo" class="logo">
+        <h1 class="program-title">Training Program</h1>
+        <div class="nav-links">
+            <a href="#" class="nav-link">Job Status</a>
+            <span class="separator">|</span>
+            <a href="#" class="nav-link">Apply for Job</a>
+            <span class="separator">|</span>
+            <a href="Vacancies.html" class="nav-link">Jobs for You</a>
+            <span class="separator">|</span>
+            <a href="index.html" class="nav-link">Home</a>
+            <span class="separator">|</span>
+            <a href="login.html" class="nav-link">Login</a>
+        </div>
+    </nav>
+
+    <!-- Sentence outside the nav bar -->
+    <div class="subtitle-container">
+        <h2 class="page-subtitle">Find Your Job that is prefer for you</h2>
+    </div>
+
+    <div class="job-cards-container">
+        <!-- Job Card 1 -->
+        <div class="job-card">
+            <div class="job-header">
+                <h2 class="job-title">Trainee Network Engineers</h2>
+            </div>
+            <div class="job-description">
+                <p>We are hiring new training network engineers for SLTMobitel. Only an associate degree, a bachelor's degree in computer science, information technology, computer engineering, or a related field undergraduates (3rd year, 4th year), and fresh graduates are preferred.</p>
+            </div>
+            <div class="job-requirements">
+                <ul>
+                    <li>No job experiences are needed.</li>
+                    <li>Networking knowledge.</li>
+                    <li>Operating systems knowledge.</li>
+                    <li>Network devices and security knowledge.</li>
+                    <li>Networking device configuration knowledge.</li>
+                </ul>
+            </div>
+            <div class="apply-button">
+                <span class="apply-button-text">Apply Now</span>
+            </div>
+        </div>
+
+        <!-- Job Card 2 -->
+        <div class="job-card">
+            <div class="job-header">
+                <h2 class="job-title">ACCOUNTANT-FINANCIAL ACCOUNTING</h2>
+            </div>
+            <div class="job-description">
+                <p>Sri Lanka Telecom is in search of high caliber, result-oriented and qualified individuals capable
+                    of playing a key role in the finance team. You will be engaged in a range of tasks in financial
+                    accounting in a highly IT-backed work environment and expected to collaborate with subsidiary
+                    companies and cross-functional departments to implement key business drivers and operational
+                    controls.</p>
+            </div>
+            <div class="job-requirements">
+                <ul>
+                    <li>Associate Membership of ICA/CIMA/ACCA</li>
+                    <li>Preference will be given to the candidates who are prize winners.</li>
+                    <li>Be a resilient leader with excellent interpersonal and communication skills.</li>
+                </ul>
+            </div>
+            <div class="apply-button">
+                <span class="apply-button-text">Apply Now</span>
+            </div>
+        </div>
+          <!-- Job Card 3 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <h2 class="job-title">ENGINEERS</h2>
+                </div>
+                <div class="job-description">
+                    <p>As an Engineer of the pioneering ICT solutions provider, you will be a distinguished members of
+                        our team, which is mainly responsible for planning, designing, operating and maintaining our
+                        state of the art ICT infrastructure.</p>
+                </div>
+                <div class="job-requirements">
+                    <ul>
+                        <li>Four-year Degree in BSc Engineering/ Bachelor of Technology from a University/Institute
+                            recognized by UGC - Sri Lanka and Institute of Engineers -Sri Lanka, equivalent to SLQF 6.
+                            OR</li>
+                        <li>Associate Member of the Institute of Engineers, Sri Lanka.</li>
+                        <li>AND</li>
+                        <li>Thorough knowledge and experience in the field of Data Centre Network Security/IDC Storage
+                            Systems/ Hybrid Cloud Deployment & Management and the area of IT & Digital Platforms would
+                            be a definite advantage.</li>
+                    </ul>
+                </div>
+                <div class="apply-button">
+                    <span class="apply-button-text">Apply Now</span>
+                </div>
+            </div>
+
+            <!-- Job Card 4 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <h2 class="job-title">TECHNICIANS</h2>
+                </div>
+                <div class="job-description">
+                    <p>Technicians are mainly responsible in install, maintain and repair electronic communications
+                        equipment in telecommunication networks and internet supply systems. Examine telecommunications
+                        equipment and systems to find and repair faults.</p>
+                </div>
+                <div class="job-requirements">
+                    <ul>
+                        <li>06 passes at the G.C.E. (O/L) exam including Sinhala Tamil and English Language and
+                            Mathematics and 03 credit passes in one sitting AND</li>
+                        <li>Should have obtained Skilled Competence Certificate -NAITA in the relevant field equivalent
+                            to NVQ Level 4 (Telecommunication / Electrical/Electronic/ ICT/Power / Air Conditioning
+                            etc).</li>
+                    </ul>
+                </div>
+                <div class="apply-button">
+                    <span class="apply-button-text">Apply Now</span>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end of .job-cards-container -->
+
+    <div style="text-align: center; margin: 40px 0;">
+        <button id="checkStatusBtn" class="check-status-btn">Check the applied job status</button>
+    </div>
+
+    <script>
+        // Apply button functionality
+        document.querySelectorAll('.apply-button').forEach(button => {
+            button.addEventListener('click', function () {
+                window.location.href = 'User Vacancy apply form.html';
+            });
+        });
+
+        // Check Status button functionality
+        document.getElementById('checkStatusBtn').addEventListener('click', function () {
+            window.location.href = 'Applied job Status.html';
+        });
+
+        // Navigation functionality
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const text = this.textContent.trim().toLowerCase();
+                if (text === 'home') {
+                    window.location.href = 'index.html';
+                } else if (text === 'about us') {
+                    window.location.href = 'About Us.html';
+                } else if (text === 'vacancies') {
+                    window.location.href = 'Vacancies.html';
+                } else if (text === 'login') {
+                    window.location.href = 'login.html';
+                } else {
+                    // For any other links, allow default
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

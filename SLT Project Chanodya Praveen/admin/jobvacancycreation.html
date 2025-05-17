@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Vacancy Creation</title>
+    <meta name="viewport" content="width=1920">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../admincss/admin.css">
+</head>
+<body class="job-vacancy-bg">
+    <script>
+        if(localStorage.getItem('adminLoggedIn') !== 'true') {
+            window.location.href = "../login.html";
+        }
+    </script>
+    <!-- Top Bar -->
+    <div class="admin-topbar">
+        <img src="../assets/images/img_rectangle_1.png" alt="SLTMobitel Logo" class="admin-logo">
+        <span class="admin-title">Training Program</span>
+        <nav class="admin-nav">
+            <a href="../index.html" class="admin-nav-link">Home</a>
+            <a href="#" class="admin-nav-link" id="logoutBtn">Logout</a>
+        </nav>
+    </div>
+
+    <!-- Sidebar -->
+   <aside class="admin-sidebar">
+    <a href="jobvacancycreation.html" class="sidebar-section active">
+        <span class="sidebar-icon"></span>
+        <span class="sidebar-label">Job Creation</span>
+    </a>
+    <a href="job modification.html" class="sidebar-section">
+        <span class="sidebar-icon"></span>
+        <span class="sidebar-label">Job Modification</span>
+    </a>
+    <a href="Recieved cv.html" class="sidebar-section">
+        <span class="sidebar-icon"></span>
+        <span class="sidebar-label bold">Received CVs</span>
+    </a>
+    <a href="Accepted cv.html" class="sidebar-section">
+        <span class="sidebar-icon"></span>
+        <span class="sidebar-label">Accepted CVs</span>
+    </a>
+</aside>
+    <!-- Main Form Card -->
+    <div class="job-form-card">
+        <form>
+            <div class="form-title">Company Job Vacancy : Web Development Trainee</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="jobid">Job ID :</label>
+                    <input type="text" id="jobid" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label for="jobposition">Job Position :</label>
+                    <input type="text" id="jobposition" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact Number :</label>
+                    <input type="text" id="contact" class="form-input">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="jobfield">Job Field :</label>
+                    <input type="text" id="jobfield" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label for="salary">Salary :</label>
+                    <input type="text" id="salary" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label for="duedate">Due Date :</label>
+                    <input type="date" id="duedate" class="form-input calendar-input">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="background">Background :</label>
+                    <input type="text" id="background" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label for="companyemail">Company Email:</label>
+                    <input type="email" id="companyemail" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label for="companylocation">Company Location:</label>
+                    <input type="text" id="companylocation" class="form-input">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="worktype">Work Type:</label>
+                    <input type="text" id="worktype" class="form-input">
+                </div>
+                <div class="form-group wide">
+                    <label for="jobdesc">Job Description :</label>
+                    <textarea id="jobdesc" class="form-input" rows="3"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="create-btn">Create</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.removeItem('adminLoggedIn');
+            window.location.href = "../index.html"; // Adjust path if needed
+        });
+    </script>
+</body>
+</html>
